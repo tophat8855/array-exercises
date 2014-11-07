@@ -11,7 +11,7 @@ describe "Tic Tac Toe, in arrays" do
     ]
   }
 
-  def getPos data, char
+  def get_position data, char
     array = []
     data.each_with_index do |row, i|
       row.each_with_index do |place, j|
@@ -24,16 +24,16 @@ describe "Tic Tac Toe, in arrays" do
   end
 
   def winning? data, player
-    posarray = getPos data, player
-    counterx = [0,0,0]
-    countery = [0,0,0]
+    position_array = get_position data, player
+    counter_x = [0,0,0]
+    counter_y = [0,0,0]
 
-    posarray.each do |pos|
-      counterx[pos[0]] += 1 #checks for column wins
-      countery[pos[1]] += 1 #checks for row wins
+    position_array.each do |pos|
+      counter_x[pos[0]] += 1 #checks for column wins
+      counter_y[pos[1]] += 1 #checks for row wins
     end
 
-    (counterx + countery).include?(3)
+    (counter_x + counter_y).include?(3)
 
   end
 
@@ -61,13 +61,13 @@ describe "Tic Tac Toe, in arrays" do
 
   describe "getting coordinates of usage" do
     it "returns an array of [row, column] array coordinates for each usage of X" do
-      x_coordinates = getPos(data, 'X')
+      x_coordinates = get_position(data, 'X')
       expect(x_coordinates).to be == [[0, 0], [1, 0], [1, 1], [2, 1]]
     end
 
     it "returns an array of [row, column] array coordinates for each usage of O" do
 
-      o_coordinates = getPos(data, 'O')
+      o_coordinates = get_position(data, 'O')
       expect(o_coordinates).to be == [[0, 1], [0, 2], [1, 2], [2, 0], [2, 2]]
     end
   end
